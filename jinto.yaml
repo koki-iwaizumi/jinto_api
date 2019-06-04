@@ -24,21 +24,17 @@ paths:
       tags:
         - token
       summary: APIトークンの取得
-      description: APIを取得するためのAPIトークンを取得します。APIトークンはAPI使用時、必須のパラメーターになります。レスポンスには有効期限も含まれています。有効期限まで、取得したAPIは使用可能です。
+      description: APIを取得するためのAPIトークンを取得します。APIトークンはAPI使用時、必須のパラメーターになります。レスポンスには有効期限も含まれています。有効期限まで、取得したAPIは使用可能です。※アクセストークンはマイページで確認できます。
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                email:
+                accesstoken:
                   type: string
-                  description: メール
-                  example: info@jinto.cloud
-                password:
-                  type: string
-                  description: パスワード
-                  example: test_password
+                  description: アクセストークン
+                  example: test_accesstoken
       responses:
         "200":
           description: OK
@@ -320,14 +316,33 @@ components:
             $ref: '#/components/schemas/Alert'
           example:
             - parameter: "temperature"
+              intervaltime: 3600
+              upperlimit: 80
+              lowerlimit: "未設定"
             - parameter: "humidity"
+              intervaltime: 60
+              upperlimit: "未設定"
+              lowerlimit: "未設定"
             - parameter: "battery"
+              intervaltime: 7200
+              upperlimit: "未設定"
+              lowerlimit: 3.5
     Alert:
       type: object
       properties:
         parameter:
           type: string
-        status:
-          type: string
-          enum: ["無効", "有効"]
-          example: "有効"
+          enum: ["temperature", "humidity", "illumination", "co2", "battery", "watertemperature", "thermocouple", "accelerationx", "accelerationy", "accelerationz", "gyrox", "gyroy", "gyroz", "atmospressure", "ec"]
+        intervaltime:
+          type: integer
+          enum: [60, 3600, 7200, 86400]
+        upperlimit:
+          oneOf:
+            - type: string
+              example: "未設定"
+            - type: integer
+        lowerlimit:
+          oneOf:
+            - type: string
+              example: "未設定"
+            - type: integer

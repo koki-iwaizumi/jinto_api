@@ -10,11 +10,14 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-# Added by API Auto Mocking Plugin
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/koki-iwaizumi/jinto/1.0.0
   - url: https://ji01.jinto.cloud/v1/development/
   - url: https://ji01.jinto.cloud/v1/production/
+  - url: https://ji02.jinto.cloud/v1/development/
+  - url: https://ji02.jinto.cloud/v1/production/
+  - url: https://ji03.jinto.cloud/v1/development/
+  - url: https://ji03.jinto.cloud/v1/production/
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/koki-iwaizumi/jinto/1.0.0
 paths:
   /token:
     post:

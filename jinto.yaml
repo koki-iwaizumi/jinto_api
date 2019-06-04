@@ -1,0 +1,330 @@
+openapi: 3.0.0
+info:
+  description: "遠隔ロガーシステム「JINTO」のAPIです。"
+  version: "1.0.0"
+  title: "JINTO API"
+  contact:
+    name: "APIサポートはこちら"
+    url: http://jinto.cloud/contact/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+# Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/koki-iwaizumi/jinto/1.0.0
+  - url: https://ji01.jinto.cloud/v1/development/
+  - url: https://ji01.jinto.cloud/v1/production/
+paths:
+  /token:
+    post:
+      tags:
+        - token
+      summary: APIトークンの取得
+      description: APIを取得するためのAPIトークンを取得します。APIトークンはAPI使用時、必須のパラメーターになります。レスポンスには有効期限も含まれています。有効期限まで、取得したAPIは使用可能です。
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: メール
+                  example: info@jinto.cloud
+                password:
+                  type: string
+                  description: パスワード
+                  example: test_password
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        "400":
+          description: 不正なリクエストです。
+          content:
+            application/json:
+              example:
+                token: ""
+                expires: ""
+                message: "invalid request"
+    get:
+      tags:
+        - token
+      summary: APIトークンの確認
+      description: APIトークンが使用可能か確認します。使用可能な場合はレスポンスに有効期限も含まれます。
+      parameters:
+        - name: token
+          in: query
+          description: APIトークン
+          required: true
+          schema:
+            type: string
+          example: test_token
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        "400":
+          description: 不正なリクエストです。
+          content:
+            application/json:
+              example:
+                token: ""
+                expires: ""
+                message: "invalid request"
+        "404":
+          description: 有効期限が切れています。
+          content:
+            application/json:
+              example:
+                token: ""
+                expires: ""
+                message: "expired"
+
+  /module:
+    get:
+      tags:
+        - module
+      summary: モジュールの取得
+      description: 登録済みのモジュール一覧を取得します。
+      parameters:
+        - in: header
+          name: X-Ginto-Token
+          schema:
+            type: string
+          required: true
+          description: APIトークン
+          example: test_token
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  modules:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Module'
+                  message:
+                    type: string
+                    example: ""
+        "400":
+          description: 不正なリクエストです。
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  modules:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Module'
+                    example: []
+                  message:
+                    type: string
+                    example: "invalid request"
+    post:
+      tags:
+        - module
+      summary: モジュールの編集
+      description: 指定したuuidのモジュールの設定値を編集します。
+      parameters:
+        - in: header
+          name: X-Ginto-Token
+          schema:
+            type: string
+          required: true
+          description: APIトークン
+          example: test_token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Module'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: 不正なリクエストです。
+        "404":
+          description: 指定されたuuidのモジュールがありません。
+          
+  /module/create:
+    post:
+      tags:
+        - module
+      summary: モジュールの登録　開発用のみ
+      description: 指定したuuidのモジュールの設定値を編集します。
+      parameters: []
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: 不正なリクエストです。
+          
+  /alertemail:
+    get:
+      tags:
+        - alertemail
+      summary: アラートメールの取得
+      description: 登録済みのアラートメール一覧を取得します。
+      parameters: []
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: 不正なリクエストです。
+    post:
+      tags:
+        - alertemail
+      summary: アラートメールの登録及び編集
+      description: 複数のアラートメールを登録します。既に登録されたメールアドレスがある場合、上書き保存されます。
+      parameters: []
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: 不正なリクエストです。
+    delete:
+      tags:
+        - alertemail
+      summary: アラートメールの削除
+      description: アラートメールを削除します。
+      parameters: []
+      responses:
+        "204":
+          description: アラートメールが削除されました。
+        "400":
+          description: 不正なリクエストです。
+        "404":
+          description: 指定されたアラートメールがありません。
+  /datalog:
+    get:
+      tags:
+        - datalog
+      summary: データログの取得
+      description:       指定したuuidのparameterのモジュールのデータログ一覧を取得します。最大取得数を超えた場合はpageを指定すると取得データがオフセットされます。
+      parameters: []
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: 不正なリクエストです。
+        "404":
+          description: 指定されたuuidがありません。
+          
+  /alertlog:
+    get:
+      tags:
+        - alertlog
+      summary: アラートログの取得
+      description: 指定したuuidのparameterのモジュールのアラートログ一覧を取得します。最大取得数を超えた場合はpageを指定すると取得データがオフセットされます。
+      parameters: []
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: 不正なリクエストです。
+        "404":
+          description: 指定されたuuidがありません。
+  /log:
+    post:
+      tags:
+        - log
+      summary: データログ及びアラートログの登録　開発用のみ
+      description: 指定したuuidのモジュールのデータログ及びアラートログを登録します。
+      parameters: []
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: 不正なリクエストです。
+        "404":
+          description: 指定されたuuidがありません。
+  /webhook:
+    get:
+      tags:
+        - webhook
+      summary: webhook用エンドポイントの取得
+      description: webhook用のエンドポイント一覧を取得します。
+      parameters: []
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: 不正なリクエストです。
+    post:
+      tags:
+        - webhook
+      summary: webhook用エンドポイントの登録及び編集
+      description: 複数のエンドポイントを登録します。既に登録されたエンドポイントがある場合、上書き保存されます。
+      parameters: []
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: 不正なリクエストです。
+    delete:
+      tags:
+        - webhook
+      summary: webhook用エンドポイントの削除
+      description: webhook用エンドポイントを削除します。
+      parameters: []
+      responses:
+        "204":
+          description: webhook用エンドポイントが削除されました。
+        "400":
+          description: 不正なリクエストです。
+        "404":
+          description: 指定されたwebhook用エンドポイントがありません。
+          
+components:
+  schemas:
+    Token:
+      type: object
+      properties:
+        token:
+          type: string
+          example: "test_token"
+        expires:
+          type: string
+          example: "2013-10-17T10:00:00"
+        message:
+          type: string
+          example: ""
+    Module:
+      type: object
+      properties:
+        uuid:
+          type: string
+          example: "5JT0010000000000"
+        status:
+          type: string
+          enum: ["無効", "有効"]
+          example: "有効"
+        alert:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alert'
+          example:
+            - parameter: "temperature"
+            - parameter: "humidity"
+            - parameter: "battery"
+    Alert:
+      type: object
+      properties:
+        parameter:
+          type: string
+        status:
+          type: string
+          enum: ["無効", "有効"]
+          example: "有効"

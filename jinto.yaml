@@ -513,7 +513,7 @@ components:
     Messages:
       type: object
       properties:
-        message:
+        messages:
           type: array
           items:
             type: string

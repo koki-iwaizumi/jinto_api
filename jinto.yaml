@@ -491,12 +491,15 @@ paths:
 
 components:
   schemas:
+    String:
+      type: object
     Message:
       type: object
       properties:
         message:
-          type: string
-          example: "success"
+          type: array
+            items:
+              $ref: '#/components/schemas/String'
     Uuid:
       type: string
       minLength: 16

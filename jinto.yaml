@@ -551,7 +551,7 @@ components:
         - $ref: '#/components/schemas/Messages'
         - type: object
           properties:
-            token:
+            apitoken:
               type: string
               example: "test_token"
             expires:

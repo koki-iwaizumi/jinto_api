@@ -111,9 +111,9 @@ paths:
               schema: 
                 $ref: '#/components/schemas/ModuleSet'
               example:
-                modules: []
                 messages:
                   - "invalid request"
+                modules: []
     post:
       tags:
         - module
@@ -317,11 +317,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/DatalogSet'
               example:
+                messages:
+                  - "not found uuid"
                 total: 0
                 page: 1
                 per_page: 200
-                messages:
-                  - "not found uuid"
                 uuid: "5JT0010000000000"
                 parameter: "temperature"
                 datalogs: []

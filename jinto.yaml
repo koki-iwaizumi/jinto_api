@@ -49,10 +49,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/TokenSet'
               example:
-                token: ""
-                expires: ""
                 messages:
                   - "invalid request"
+                apitoken: ""
+                expires: ""
     get:
       tags:
         - token
@@ -74,10 +74,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/TokenSet'
               example:
-                token: ""
-                expires: ""
                 messages:
                   - "invalid request"
+                apitoken: ""
+                expires: ""
         "404":
           description: 有効期限が切れています。
           content:
@@ -85,10 +85,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/TokenSet'
               example:
-                token: ""
-                expires: ""
                 messages:
                   - "expired"
+                apitoken: ""
+                expires: ""
   /module:
     get:
       tags:
@@ -302,11 +302,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/DatalogSet'
               example:
+                messages:
+                  - "invalid request"
                 total: 0
                 page: 1
                 per_page: 200
-                messages:
-                  - "invalid request"
                 uuid: "5JT0010000000000"
                 parameter: "temperature"
                 datalogs: []
@@ -353,11 +353,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/AlertlogSet'
               example:
+                messages:
+                  - "invalid request"
                 total: 0
                 page: 1
                 per_page: 200
-                messages:
-                  - "invalid request"
                 uuid: "5JT0010000000000"
                 parameter: "temperature"
                 alertlogs: []
@@ -368,11 +368,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/AlertlogSet'
               example:
+                messages:
+                 - "not found uuid"
                 total: 0
                 page: 1
                 per_page: 200
-                messages:
-                 - "not found uuid"
                 uuid: "5JT0010000000000"
                 parameter: "temperature"
                 alertlogs: []
@@ -465,7 +465,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Messages'
               example:
-                message:
+                messages:
                   - "invalid request"
     delete:
       tags:
@@ -496,7 +496,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Messages'
               example:
-                message:
+                messages:
                   - "invalid request"
         "404":
           description: 指定されたwebhook用エンドポイントがありません。
@@ -505,7 +505,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Messages'
               example:
-                message:
+                messages:
                   - "not found uri"
 
 components:
@@ -660,8 +660,8 @@ components:
           $ref: '#/components/schemas/Per_page'
     DatalogSet:
       allOf:
-        - $ref: '#/components/schemas/Pager'
         - $ref: '#/components/schemas/Messages'
+        - $ref: '#/components/schemas/Pager'
         - type: object
           properties:
             uuid:
@@ -692,8 +692,8 @@ components:
               format: double
     AlertlogSet:
       allOf:
-        - $ref: '#/components/schemas/Pager'
         - $ref: '#/components/schemas/Messages'
+        - $ref: '#/components/schemas/Pager'
         - type: object
           properties:
             uuid:

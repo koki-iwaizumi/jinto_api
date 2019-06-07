@@ -51,7 +51,8 @@ paths:
               example:
                 token: ""
                 expires: ""
-                message: "invalid request"
+                messages:
+                  - "invalid request"
     get:
       tags:
         - token
@@ -75,7 +76,8 @@ paths:
               example:
                 token: ""
                 expires: ""
-                message: "invalid request"
+                messages:
+                  - "invalid request"
         "404":
           description: 有効期限が切れています。
           content:
@@ -85,7 +87,8 @@ paths:
               example:
                 token: ""
                 expires: ""
-                message: "expired"
+                messages:
+                  - "expired"
   /module:
     get:
       tags:
@@ -109,7 +112,8 @@ paths:
                 $ref: '#/components/schemas/ModuleSet'
               example:
                 modules: []
-                message: "invalid request"
+                messages:
+                  - "invalid request"
     post:
       tags:
         - module
@@ -128,25 +132,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
-              example:
-                message: "success"
+                $ref: '#/components/schemas/Messages'
         "400":
           description: 不正なリクエストです。
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
               example:
-                message: "invalid request"
+                messages:
+                  - "invalid request"
         "404":
           description: 指定されたuuidのモジュールがありません。
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
               example:
-                message: "not found uuid"
+                messages:
+                  - "not found uuid"
           
   /module/create:
     post:
@@ -167,15 +171,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
         "400":
           description: 不正なリクエストです。
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
               example:
-                message: "invalid request"
+                messages:
+                  - "invalid request"
   /alertemail:
     get:
       tags:
@@ -198,7 +203,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/AlertemailSet'
               example:
-                message: "invalid request"              
+                messages:
+                  - "invalid request"              
                 alertemails: []
     post:
       tags:
@@ -218,15 +224,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
         "400":
           description: 不正なリクエストです。
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
               example:
-                message: "invalid request"
+                messages:
+                  - "invalid request"
     delete:
       tags:
         - alertemail
@@ -248,23 +255,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
         "400":
           description: 不正なリクエストです。
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
               example:
-                message: "invalid request"
+                messages:
+                  - "invalid request"
         "404":
           description: 指定されたアラートメールがありません。
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
               example:
-                message: "not found email"
+                messages:
+                  - "not found email"
   /datalog:
     get:
       tags:
@@ -296,7 +305,8 @@ paths:
                 total: 0
                 page: 1
                 per_page: 200
-                message: "invalid request"
+                messages:
+                  - "invalid request"
                 uuid: "5JT0010000000000"
                 parameter: "temperature"
                 datalogs: []
@@ -310,7 +320,8 @@ paths:
                 total: 0
                 page: 1
                 per_page: 200
-                message: "not found uuid"
+                messages:
+                  - "not found uuid"
                 uuid: "5JT0010000000000"
                 parameter: "temperature"
                 datalogs: []
@@ -345,7 +356,8 @@ paths:
                 total: 0
                 page: 1
                 per_page: 200
-                message: "invalid request"
+                messages:
+                  - "invalid request"
                 uuid: "5JT0010000000000"
                 parameter: "temperature"
                 alertlogs: []
@@ -359,7 +371,8 @@ paths:
                 total: 0
                 page: 1
                 per_page: 200
-                message: "not found uuid"
+                messages:
+                 - "not found uuid"
                 uuid: "5JT0010000000000"
                 parameter: "temperature"
                 alertlogs: []
@@ -382,23 +395,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
         "400":
           description: 不正なリクエストです。
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
               example:
-                message: "invalid request"
+                messages:
+                  - "invalid request"
         "404":
           description: 指定されたuuidがありません。
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
               example:
-                message: "not found uuid"
+                messages:
+                 - "not found uuid"
   /webhook:
     get:
       tags:
@@ -421,7 +436,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WebhookSet'
               example:
-                message: "invalid request"              
+                messages:
+                 - "invalid request"
                 webhooks: []
     post:
       tags:
@@ -441,15 +457,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
         "400":
           description: 不正なリクエストです。
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
               example:
-                message: "invalid request"
+                message:
+                  - "invalid request"
     delete:
       tags:
         - webhook
@@ -471,35 +488,37 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
         "400":
           description: 不正なリクエストです。
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
               example:
-                message: "invalid request"
+                message:
+                  - "invalid request"
         "404":
           description: 指定されたwebhook用エンドポイントがありません。
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Message'
+                $ref: '#/components/schemas/Messages'
               example:
-                message: "not found uri"
+                message:
+                  - "not found uri"
 
 components:
   schemas:
-    String:
-      type: object
-    Message:
+    Messages:
       type: object
       properties:
         message:
           type: array
-            items:
-              $ref: '#/components/schemas/String'
+          items:
+            type: string
+          example:
+            - "success"
     Uuid:
       type: string
       minLength: 16
@@ -529,7 +548,7 @@ components:
       default: "alert"
     TokenSet:
       allOf:
-        - $ref: '#/components/schemas/Message'
+        - $ref: '#/components/schemas/Messages'
         - type: object
           properties:
             token:
@@ -564,7 +583,7 @@ components:
               lowerlimit: 3.5
     ModuleSet:
       allOf:
-        - $ref: '#/components/schemas/Message'
+        - $ref: '#/components/schemas/Messages'
         - type: object
           properties:
             modules:
@@ -617,7 +636,7 @@ components:
               status: "無効"
     AlertemailSet:
       allOf:
-        - $ref: '#/components/schemas/Message'
+        - $ref: '#/components/schemas/Messages'
         - $ref: '#/components/schemas/Alertemails'
     Datalog:
       type: object
@@ -642,7 +661,7 @@ components:
     DatalogSet:
       allOf:
         - $ref: '#/components/schemas/Pager'
-        - $ref: '#/components/schemas/Message'
+        - $ref: '#/components/schemas/Messages'
         - type: object
           properties:
             uuid:
@@ -674,7 +693,7 @@ components:
     AlertlogSet:
       allOf:
         - $ref: '#/components/schemas/Pager'
-        - $ref: '#/components/schemas/Message'
+        - $ref: '#/components/schemas/Messages'
         - type: object
           properties:
             uuid:
@@ -735,7 +754,7 @@ components:
             status: "無効"
     WebhookSet:
       allOf:
-        - $ref: '#/components/schemas/Message'
+        - $ref: '#/components/schemas/Messages'
         - $ref: '#/components/schemas/Webhooks'
 
   parameters:

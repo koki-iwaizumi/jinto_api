@@ -571,6 +571,9 @@ components:
           $ref: '#/components/schemas/Uuid'
         status:
           $ref: '#/components/schemas/Status'
+        memo:
+          type: string
+          example: "memo"
         alert:
           type: array
           items:

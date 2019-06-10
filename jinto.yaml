@@ -25,6 +25,8 @@ paths:
         - token
       summary: APIトークンの取得
       description: APIを取得するためのAPIトークンを取得します。APIトークンはAPI使用時、必須のパラメーターになります。レスポンスには有効期限も含まれています。有効期限まで、取得したAPIは使用可能です。※アクセストークンはマイページで確認できます。
+      parameters:
+        - $ref: '#/components/parameters/Contenttype'
       requestBody:
         content:
           application/json:
@@ -121,6 +123,7 @@ paths:
       description: 指定したuuidのモジュールの設定値を編集します。intervaltimeは60,3600,7200,86400[s]から選択します。
       parameters:
         - $ref: '#/components/parameters/Token'
+        - $ref: '#/components/parameters/Contenttype'
       requestBody:
         content:
           application/json:
@@ -160,6 +163,7 @@ paths:
       description: 指定したuuidのモジュールの設定値を編集します。uuidは16文字で送信します。intervaltimeは60,3600,7200,86400[s]から選択します。（最大登録数:5）
       parameters:
         - $ref: '#/components/parameters/Token'
+        - $ref: '#/components/parameters/Contenttype'
       requestBody:
         content:
           application/json:
@@ -213,6 +217,7 @@ paths:
       description: 複数のアラートメールを登録します。既に登録されたメールアドレスがある場合、上書き保存されます。（最大登録数:10）
       parameters:
         - $ref: '#/components/parameters/Token'
+        - $ref: '#/components/parameters/Contenttype'
       requestBody:
         content:
           application/json:
@@ -384,6 +389,7 @@ paths:
       description: 指定したuuidのモジュールのデータログ及びアラートログを登録します。limitvalueに数値を入力するとアラートログも登録されます。（最大登録数:50）
       parameters:
         - $ref: '#/components/parameters/Token'
+        - $ref: '#/components/parameters/Contenttype'
       requestBody:
         content:
           application/json:
@@ -446,6 +452,7 @@ paths:
       description: 複数のエンドポイントを登録します。既に登録されたエンドポイントがある場合、上書き保存されます。（最大登録数:2）
       parameters:
         - $ref: '#/components/parameters/Token'
+        - $ref: '#/components/parameters/Contenttype'
       requestBody:
         content:
           application/json:
@@ -772,8 +779,8 @@ components:
       schema:
         type: string
       required: true
-      description: Content-Type
-      default: application/json
+      description: application/json
+      example: application/json
     Uuid:
       name: uuid
       in: query

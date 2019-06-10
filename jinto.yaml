@@ -759,7 +759,7 @@ components:
 
   parameters:
     Token:
-      name: X-Jinto-Token
+      name: X-Cloud-Token
       in: header
       schema:
         type: string

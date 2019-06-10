@@ -115,7 +115,7 @@ paths:
               example:
                 messages:
                   - "invalid request"
-                modules: []
+                modules: null
     post:
       tags:
         - module

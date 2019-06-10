@@ -79,14 +79,14 @@ paths:
                 apitoken: ""
                 expires: ""
         "404":
-          description: 有効期限が切れています。
+          description: 有効なAPIトークンではありません。
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TokenSet'
               example:
                 messages:
-                  - "expired"
+                  - "not found"
                 apitoken: ""
                 expires: ""
   /module:
@@ -766,6 +766,14 @@ components:
       required: true
       description: APIトークン
       example: test_token
+    Contenttype:
+      name: Content-Type
+      in: header
+      schema:
+        type: string
+      required: true
+      description: Content-Type
+      default: application/json
     Uuid:
       name: uuid
       in: query

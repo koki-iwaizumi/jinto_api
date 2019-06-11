@@ -591,6 +591,7 @@ components:
       allOf:
         - $ref: '#/components/schemas/Messages'
         - $ref: '#/components/schemas/Pager'
+        - $ref: '#/components/schemas/Time'
         - type: object
           properties:
             uuid:
@@ -623,6 +624,7 @@ components:
       allOf:
         - $ref: '#/components/schemas/Messages'
         - $ref: '#/components/schemas/Pager'
+        - $ref: '#/components/schemas/Time'
         - type: object
           properties:
             uuid:
@@ -670,7 +672,15 @@ components:
       allOf:
         - $ref: '#/components/schemas/Messages'
         - $ref: '#/components/schemas/Webhooks'
-
+    Time:
+      type: object
+      properties:
+        to:
+          type: string
+          example: "2019-06-12T10:56:42"
+        from:
+          type: string
+          example: "2019-06-02T10:56:42"
   parameters:
     Token:
       name: X-Cloud-Token

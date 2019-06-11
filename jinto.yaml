@@ -178,7 +178,7 @@ paths:
               example:
                 messages:
                   - "invalid request"              
-                alertemails: []
+                alertemails: null
     post:
       tags:
         - alertemail

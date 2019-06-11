@@ -120,7 +120,7 @@ paths:
       tags:
         - module
       summary: モジュールの編集
-      description: 指定したuuidのモジュールの設定値を編集します。intervaltimeは60,3600,7200,86400[s]から選択します。
+      description: 指定したuuidのモジュールの設定値を編集します。intervaltimeは60,3600,7200,86400[s]から選択します。※upperlimit,lowerlimitは文字列（例："3.5"）で送信します。
       parameters:
         - $ref: '#/components/parameters/Token'
         - $ref: '#/components/parameters/Contenttype'

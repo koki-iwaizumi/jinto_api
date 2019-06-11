@@ -581,7 +581,7 @@ components:
           example:
             - parameter: "temperature"
               intervaltime: 3600
-              upperlimit: 80
+              upperlimit: "80"
               lowerlimit: "未設定"
             - parameter: "humidity"
               intervaltime: 60
@@ -590,7 +590,7 @@ components:
             - parameter: "battery"
               intervaltime: 7200
               upperlimit: "未設定"
-              lowerlimit: 3.5
+              lowerlimit: "3.5"
     ModuleSet:
       allOf:
         - $ref: '#/components/schemas/Messages'
@@ -610,19 +610,11 @@ components:
           enum: [60, 3600, 7200, 86400]
           example: 3600
         upperlimit:
-          oneOf:
-            - type: string
-              example: "未設定"
-            - type: number
-              format: double
-              example: 80.0
+          type: string
+          example: "未設定"
         lowerlimit:
-          oneOf:
-            - type: string
-              example: "未設定"
-            - type: number
-              format: double
-              example: -10.0
+          type: string
+          example: "未設定"
     Alertemail:
       type: object
       properties:

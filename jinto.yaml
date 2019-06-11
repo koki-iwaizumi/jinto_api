@@ -717,14 +717,14 @@ components:
     From:
       name: from
       in: query
-      description: 開始時間(デフォルト：7日前) ※JST
+      description: 開始時間(デフォルト：7日前) ※日本時間
       schema:
         type: string
       example: "2019-06-02T10:00:00"
     To:
       name: to
       in: query
-      description: 終了時間(デフォルト：現在日時) ※JST
+      description: 終了時間(デフォルト：現在日時) ※日本時間
       schema:
         type: string
       example: "2019-06-15T10:00:00"

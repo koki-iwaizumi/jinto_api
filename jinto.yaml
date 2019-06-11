@@ -677,10 +677,10 @@ components:
       properties:
         to:
           type: string
-          example: "2019-06-12T10:56:42"
+          example: "2019-06-15T10:00:00"
         from:
           type: string
-          example: "2019-06-02T10:56:42"
+          example: "2019-06-02T10:00:00"
   parameters:
     Token:
       name: X-Cloud-Token

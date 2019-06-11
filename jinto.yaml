@@ -276,10 +276,10 @@ paths:
                 messages:
                   - "invalid request"
                 total: 0
-                page: 1
-                per_page: 200
-                uuid: "5JT0010000000000"
-                parameter: "temperature"
+                page: 0
+                per_page: 0
+                uuid: ""
+                parameter: ""
                 datalogs: null
         "404":
           description: 指定されたuuidがありません。
@@ -291,10 +291,10 @@ paths:
                 messages:
                   - "not found uuid"
                 total: 0
-                page: 1
-                per_page: 200
-                uuid: "5JT0010000000000"
-                parameter: "temperature"
+                page: 0
+                per_page: 0
+                uuid: ""
+                parameter: ""
                 datalogs: null
   /alertlog:
     get:
@@ -327,10 +327,10 @@ paths:
                 messages:
                   - "invalid request"
                 total: 0
-                page: 1
-                per_page: 200
-                uuid: "5JT0010000000000"
-                parameter: "temperature"
+                page: 0
+                per_page: 0
+                uuid: ""
+                parameter: ""
                 alertlogs: null
         "404":
           description: 指定されたuuidがありません。
@@ -342,10 +342,10 @@ paths:
                 messages:
                  - "not found uuid"
                 total: 0
-                page: 1
-                per_page: 200
-                uuid: "5JT0010000000000"
-                parameter: "temperature"
+                page: 0
+                per_page: 0
+                uuid: ""
+                parameter: ""
                 alertlogs: null
   /webhook:
     get:

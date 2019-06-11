@@ -280,7 +280,7 @@ paths:
                 per_page: 200
                 uuid: "5JT0010000000000"
                 parameter: "temperature"
-                datalogs: []
+                datalogs: null
         "404":
           description: 指定されたuuidがありません。
           content:
@@ -295,7 +295,7 @@ paths:
                 per_page: 200
                 uuid: "5JT0010000000000"
                 parameter: "temperature"
-                datalogs: []
+                datalogs: null
   /alertlog:
     get:
       tags:
@@ -331,7 +331,7 @@ paths:
                 per_page: 200
                 uuid: "5JT0010000000000"
                 parameter: "temperature"
-                alertlogs: []
+                alertlogs: null
         "404":
           description: 指定されたuuidがありません。
           content:
@@ -346,7 +346,7 @@ paths:
                 per_page: 200
                 uuid: "5JT0010000000000"
                 parameter: "temperature"
-                alertlogs: []
+                alertlogs: null
   /webhook:
     get:
       tags:

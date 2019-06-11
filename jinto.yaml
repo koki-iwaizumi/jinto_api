@@ -154,37 +154,6 @@ paths:
               example:
                 messages:
                   - "not found uuid"
-          
-  /module/create:
-    post:
-      tags:
-        - module
-      summary: モジュールの登録　開発用のみ
-      description: 指定したuuidのモジュールの設定値を編集します。uuidは16文字で送信します。intervaltimeは60,3600,7200,86400[s]から選択します。（最大登録数:5）
-      parameters:
-        - $ref: '#/components/parameters/Token'
-        - $ref: '#/components/parameters/Contenttype'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Module'
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Messages'
-        "400":
-          description: 不正なリクエストです。
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Messages'
-              example:
-                messages:
-                  - "invalid request"
   /alertemail:
     get:
       tags:
@@ -381,45 +350,6 @@ paths:
                 uuid: "5JT0010000000000"
                 parameter: "temperature"
                 alertlogs: []
-  /log:
-    post:
-      tags:
-        - log
-      summary: データログ及びアラートログの登録　開発用のみ
-      description: 指定したuuidのモジュールのデータログ及びアラートログを登録します。limitvalueに数値を入力するとアラートログも登録されます。（最大登録数:50）
-      parameters:
-        - $ref: '#/components/parameters/Token'
-        - $ref: '#/components/parameters/Contenttype'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Log'
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Messages'
-        "400":
-          description: 不正なリクエストです。
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Messages'
-              example:
-                messages:
-                  - "invalid request"
-        "404":
-          description: 指定されたuuidがありません。
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Messages'
-              example:
-                messages:
-                 - "not found uuid"
   /webhook:
     get:
       tags:
@@ -715,21 +645,6 @@ components:
                   gettime: "2019-06-05T02:14:10"
                   limitstatus: "下限"
                   limitvalue: 0.0
-    Log:
-      allOf:
-        - $ref: '#/components/schemas/Datalog'
-        - type: object
-          properties:
-            limitvalue:
-              type: number
-              format: double
-              nullable: true
-              example: null
-              default: null
-            uuid:
-              $ref: '#/components/schemas/Uuid'
-            parameter:
-              $ref: '#/components/schemas/Parameter'
     Webhook:
       type: object
       properties:

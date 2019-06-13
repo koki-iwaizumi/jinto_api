@@ -606,6 +606,10 @@ components:
               $ref: '#/components/schemas/Uuid'
             parameter:
               $ref: '#/components/schemas/Parameter'
+            parameter_name:
+              $ref: '#/components/schemas/Parameter_name'
+            unit:
+              $ref: '#/components/schemas/Unit'
             datalogs:
               type: array
               items:
@@ -638,6 +642,10 @@ components:
               $ref: '#/components/schemas/Uuid'
             parameter:
               $ref: '#/components/schemas/Parameter'
+            parameter_name:
+              $ref: '#/components/schemas/Parameter_name'
+            unit:
+              $ref: '#/components/schemas/Unit'
             alertlogs:
               type: array
               items:
@@ -688,6 +696,12 @@ components:
         from:
           type: string
           example: "2019-06-02T10:00:00"
+    Parameter_name:
+      type: string
+      example: "気温"
+    Unit:
+      type: string
+      example: "°C"
   parameters:
     Token:
       name: X-Cloud-Token

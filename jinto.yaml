@@ -664,7 +664,7 @@ components:
       properties:
         uri:
           type: string
-          format: uri
+          format: url
         event:
           $ref: '#/components/schemas/Event'
         status:
@@ -677,10 +677,10 @@ components:
           items:
             $ref: '#/components/schemas/Webhook'
           example:
-          - uri: "https://jinto.cloud/api/"
+          - url: "https://jinto.cloud/api/"
             event: "アラート発生時"
             status: "有効"
-          - uri: "http://cloudhard.jp/api/"
+          - url: "http://cloudhard.jp/api/"
             event: "データ受信・アラート発生時"
             status: "無効"
     WebhookSet:

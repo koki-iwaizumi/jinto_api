@@ -379,7 +379,7 @@ paths:
               example:
                 messages:
                  - "invalid request"
-                webhooks: []
+                webhooks: null
     post:
       tags:
         - webhook
@@ -485,9 +485,9 @@ components:
       example: 200
     Event:
       type: string
-      enum: ["data", "alert"]
-      example: "alert"
-      default: "alert"
+      enum: ["アラート発生時", "データ受信時", "データ受信・アラート発生時"]
+      example: "アラート発生時"
+      default: "アラート発生時"
     TokenSet:
       allOf:
         - $ref: '#/components/schemas/Messages'
@@ -678,10 +678,10 @@ components:
             $ref: '#/components/schemas/Webhook'
           example:
           - uri: "https://jinto.cloud/api/"
-            event: "alert"
+            event: "アラート発生時"
             status: "有効"
           - uri: "http://cloudhard.jp/api/"
-            event: "data"
+            event: "データ受信・アラート発生時"
             status: "無効"
     WebhookSet:
       allOf:

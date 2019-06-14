@@ -250,7 +250,7 @@ paths:
       tags:
         - alertemail
       summary: アラートメールのテスト送信
-      description: 登録したメールアドレスで、ステータスが有効なものにテスト送信します。正常にテスト送信が終了するとStatusCodeが200で返ってきます。
+      description: 登録したメールアドレスで、ステータスが有効なものにテスト送信します。
       parameters:
         - $ref: '#/components/parameters/Token'
       responses:
@@ -482,7 +482,7 @@ paths:
       tags:
         - webhook
       summary: webhookのデータ受信時 テスト送信
-      description: 登録したwebhookで、ステータスが有効なもの、かつ、イベント条件がデータ受信時なものにテスト送信します。正常にテスト送信が終了するとStatusCodeが200で返ってきます。
+      description: 登録したwebhookで、ステータスが有効、かつ、イベント条件がデータ受信時のURLにテスト送信します。
       parameters:
         - $ref: '#/components/parameters/Token'
       responses:
@@ -494,7 +494,7 @@ paths:
                 $ref: '#/components/schemas/Messages'
               example:
                 messages:
-                  - "info@jinto.cloud: メール送信に成功しました。"
+                  - "https://test.endpointURL/: テスト送信完了しました。 ステータスコード: 200"
                   - "test finish"
         "400":
           description: 不正なリクエストです。
@@ -505,7 +505,34 @@ paths:
               example:
                 messages:
                   - "invalid request"  
-                  
+  /webhook/alerttest:
+    post:
+      tags:
+        - webhook
+      summary: webhookのアラート発生時 テスト送信
+      description: 登録したwebhookで、ステータスが有効、かつ、イベント条件がアラート発生時のURLにテスト送信します。
+      parameters:
+        - $ref: '#/components/parameters/Token'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messages'
+              example:
+                messages:
+                  - "https://test.endpointURL/: テスト送信完了しました。 ステータスコード: 200"
+                  - "test finish"
+        "400":
+          description: 不正なリクエストです。
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messages'
+              example:
+                messages:
+                  - "invalid request"  
 components:
   schemas:
     Messages:

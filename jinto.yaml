@@ -409,6 +409,46 @@ paths:
               example:
                 messages:
                   - "invalid request"
+    delete:
+      tags:
+        - webhook
+      summary: webhook用エンドポイントの削除
+      description: webhook用エンドポイントを削除します。
+      parameters:
+        - $ref: '#/components/parameters/Token'
+        - name: uri
+          in: query
+          description: webhook用エンドポイントURI
+          required: true
+          schema:
+            type: string
+            format: uri
+          example: "http://cloudhard.jp/api/"
+      responses:
+        "204":
+          description: webhook用エンドポイントが削除されました。
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messages'
+        "400":
+          description: 不正なリクエストです。
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messages'
+              example:
+                messages:
+                  - "invalid request"
+        "404":
+          description: 指定されたwebhook用エンドポイントがありません。
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messages'
+              example:
+                messages:
+                  - "not found uri"
 
 components:
   schemas:

@@ -250,7 +250,7 @@ paths:
       tags:
         - alertemail
       summary: アラートメールのテスト送信
-      description: 登録したメールアドレスで、ステータスが有効なものにテスト送信します。全て成功するとStatusCodeが200で返ってきます。
+      description: 登録したメールアドレスで、ステータスが有効なものにテスト送信します。正常にテスト送信が終了するとStatusCodeが200で返ってきます。
       parameters:
         - $ref: '#/components/parameters/Token'
       responses:
@@ -263,7 +263,7 @@ paths:
               example:
                 messages:
                   - "info@jinto.cloud: メール送信に成功しました。"
-                  - "success"
+                  - "test finish"
         "400":
           description: 不正なリクエストです。
           content:

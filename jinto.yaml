@@ -416,13 +416,13 @@ paths:
       description: webhook用エンドポイントを削除します。
       parameters:
         - $ref: '#/components/parameters/Token'
-        - name: uri
+        - name: url
           in: query
           description: webhook用エンドポイントURI
           required: true
           schema:
             type: string
-            format: uri
+            format: url
           example: "http://cloudhard.jp/api/"
       responses:
         "204":
@@ -448,7 +448,7 @@ paths:
                 $ref: '#/components/schemas/Messages'
               example:
                 messages:
-                  - "not found uri"
+                  - "not found url"
 
 components:
   schemas:

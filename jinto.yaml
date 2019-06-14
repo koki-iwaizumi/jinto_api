@@ -418,7 +418,7 @@ paths:
         - $ref: '#/components/parameters/Token'
         - name: url
           in: query
-          description: webhook用エンドポイントURI
+          description: webhook用エンドポイントURL
           required: true
           schema:
             type: string

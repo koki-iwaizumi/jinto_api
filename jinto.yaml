@@ -221,7 +221,7 @@ paths:
             format: email
           example: test1@test.test
       responses:
-        "204":
+        "200":
           description: アラートメールが削除されました。
           content:
             application/json:
@@ -425,7 +425,7 @@ paths:
             format: url
           example: "http://cloudhard.jp/api/"
       responses:
-        "204":
+        "200":
           description: webhook用エンドポイントが削除されました。
           content:
             application/json:

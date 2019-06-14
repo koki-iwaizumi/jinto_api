@@ -245,6 +245,34 @@ paths:
               example:
                 messages:
                   - "not found email"
+  /alertemail/test:
+    post:
+      tags:
+        - alertemail
+      summary: アラートメールのテスト送信
+      description: 登録したメールアドレスで、ステータスが有効なものにテスト送信します。全て成功するとStatusCodeが200で返ってきます。
+      parameters:
+        - $ref: '#/components/parameters/Token'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messages'
+              example:
+                messages:
+                  - "info@jinto.cloud: メール送信に成功しました。"
+                  - "success"
+        "400":
+          description: 不正なリクエストです。
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messages'
+              example:
+                messages:
+                  - "invalid request"  
   /datalog:
     get:
       tags:

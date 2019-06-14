@@ -504,7 +504,7 @@ paths:
                 $ref: '#/components/schemas/Messages'
               example:
                 messages:
-                  - "invalid request"  
+                  - "invalid request"
   /webhook/alerttest:
     post:
       tags:
@@ -532,7 +532,7 @@ paths:
                 $ref: '#/components/schemas/Messages'
               example:
                 messages:
-                  - "invalid request"  
+                  - "invalid request"
 components:
   schemas:
     Messages:
